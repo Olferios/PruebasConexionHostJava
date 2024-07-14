@@ -10,13 +10,12 @@ public class Avion {
     private int idEstado;
     private int idModelo;
     private int idAerolinea;
-    public Avion() {
-    }
+    
 
     
-    public Avion(int id, String matricula, int capacidad, String fechaFabricacion, int idEstado, int idModelo,
+    public Avion(String matricula, int capacidad, String fechaFabricacion, int idEstado, int idModelo,
             int idAerolinea) {
-        this.id = id;
+        //this.id = id;
         this.matricula = matricula;
         this.capacidad = capacidad;
         this.fechaFabricacion = fechaFabricacion;

@@ -19,9 +19,9 @@ public class Main {
             
             switch (opcion) {
                 case 1:
-                    System.out.println("Ingrese ID del avión:");
-                    int id = scanner.nextInt();
-                    scanner.nextLine(); // Consumir el salto de línea después de nextInt
+                    // System.out.println("Ingrese ID del avión:");
+                    // int id = scanner.nextInt();
+                    // scanner.nextLine(); // Consumir el salto de línea después de nextInt
 
                     System.out.println("Ingrese matrícula del avión:");
                     String matricula = scanner.nextLine();
@@ -45,7 +45,7 @@ public class Main {
                     int idAerolinea = scanner.nextInt();
                     scanner.nextLine(); // Consumir el salto de línea después de nextInt
 
-                    Avion avion = new Avion(id, matricula,capacidad, fechaFabricacion, idEstado, idModelo, idAerolinea);
+                    Avion avion = new Avion(matricula,capacidad, fechaFabricacion, idEstado, idModelo, idAerolinea);
                     avionRepository.createAvion(avion);
                     break;
                 

@@ -24,6 +24,7 @@ public class AvionRepository implements AvionService{
             System.out.println("User: " + user); // Verificar el usuario cargado
             // N
             connection = DriverManager.getConnection(url, user, password);
+            System.out.println("Conexión exitosa!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -33,18 +34,24 @@ public class AvionRepository implements AvionService{
     @Override
     public void createAvion(Avion avion) {
         try{
-            String query= "INSERT INTO aviones (id,matricula,fechafabricacion,idestado, idmodelo,idaerolinea) VALUES(?,?,?,?,?,?)";
-            PreparedStatement ps=connection.prepareStatement(query);
-            ps.setInt(1,avion.getId());
-            ps.setString(2,avion.getFechaFabricacion());
-            ps.setString(3,avion.getMatricula());
+            String query= "INSERT INTO aviones (matricula,capacidad,fechafabricacion,idestado, idmodelo,idaerolinea) VALUES(?,?,?,?,?,?)";
+            //PreparedStatement ps=connection.prepareStatement(query);
+            //PreparedStatement(query,PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps=connection.prepareStatement(query,
+            PreparedStatement.RETURN_GENERATED_KEYS);
+            ps.setString(1,avion.getMatricula());
+            ps.setInt(2,avion.getCapacidad());
+            ps.setString(3,avion.getFechaFabricacion());
+            
             ps.setInt(4,avion.getIdEstado());
             ps.setInt(5,avion.getIdModelo());
             ps.setInt(6,avion.getIdAerolinea());
 
             ps.executeUpdate();
+            System.out.println("Avión creado con éxito!");
 
         }catch(SQLException e){
+            e.printStackTrace();
 
         }
        
